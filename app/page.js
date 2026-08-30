@@ -146,16 +146,13 @@ export default function Home() {
 
     window.addEventListener("scroll", handleScroll);
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <main className="portfolio-page">
 
-      {/* ================= NAVBAR ================= */}
-
+      {/* NAVBAR */}
       <header className={`navbar ${scrolled ? "navbar-scrolled" : ""}`}>
         <div className="nav-container">
 
@@ -190,8 +187,7 @@ export default function Home() {
           </nav>
 
           <a href="#contact" className="nav-cta">
-            Let&apos;s Talk
-            <span>↗</span>
+            Let&apos;s Talk <span>↗</span>
           </a>
 
           <button
@@ -205,8 +201,7 @@ export default function Home() {
         </div>
       </header>
 
-      {/* ================= HERO ================= */}
-
+      {/* HERO */}
       <section id="home" className="hero-section">
 
         <div className="hero-grid-bg"></div>
@@ -248,8 +243,7 @@ export default function Home() {
 
             <div className="hero-buttons">
               <a href="#projects" className="btn btn-primary">
-                Explore My Work
-                <span>↗</span>
+                Explore My Work <span>↗</span>
               </a>
 
               <a href="#contact" className="btn btn-secondary">
@@ -283,8 +277,7 @@ export default function Home() {
 
           </div>
 
-          {/* HERO IMAGE */}
-
+          {/* PROFILE */}
           <div className="hero-visual">
 
             <div className="orbit orbit-one"></div>
@@ -320,17 +313,24 @@ export default function Home() {
               <div className="floating-icon">
                 {"</>"}
               </div>
- <div>
-                <strong>Web Developer</strong>
-                <span>Full Stack</span>
+
+              <div>
+                <strong>Full Stack Developer</strong>
+                <span>Frontend + Backend</span>
               </div>
-             
+            </div>
+
+            <div className="floating1-card graphic-card">
+              <div className="floating-icon">✦</div>
+
+              <div>
+                <strong>Graphic Designer</strong>
+                <span>Creative Design</span>
+              </div>
             </div>
 
             <div className="floating-card ai-card">
-              <div className="floating-icon">
-                AI
-              </div>
+              <div className="floating-icon">AI</div>
 
               <div>
                 <strong>Python & AI</strong>
@@ -358,14 +358,12 @@ export default function Home() {
 
       </section>
 
-      {/* ================= ABOUT ================= */}
-
+      {/* ABOUT */}
       <section id="about" className="section about-section">
 
         <div className="container">
 
           <div className="section-heading">
-
             <span className="section-number">01 /</span>
 
             <div>
@@ -377,20 +375,22 @@ export default function Home() {
                 <span>technology.</span>
               </h2>
             </div>
-
           </div>
 
           <div className="about-grid">
 
             <div className="about-content">
 
-
+            
 
               <p>
                 I completed my Graphic Design course under NAVTTC Pakistan
                 and received international certification in 2022. Since
                 then, I have worked with international and local clients
                 through Fiverr and direct projects.
+              </p>
+              <p>
+                Completed my Paid Internship Under PAKISTAN SOFTWARE EXPORT BOARD(PSEB) with Official Certification
               </p>
 
               <p>
@@ -400,183 +400,23 @@ export default function Home() {
                 experience it.
               </p>
 
-              <div
-                className="stats"
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(3, 1fr)",
-                  gap: "18px",
-                  marginTop: "45px",
-                  width: "100%",
-                }}
-              >
-                <div
-                  className="stat"
-                  style={{
-                    padding: "24px 20px",
-                    borderRadius: "18px",
-                    background:
-                      "linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02))",
-                    border: "1px solid rgba(255,255,255,0.12)",
-                    backdropFilter: "blur(12px)",
-                    WebkitBackdropFilter: "blur(12px)",
-                    transition: "all 0.35s ease",
-                    position: "relative",
-                    overflow: "hidden",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = "translateY(-7px)";
-                    e.currentTarget.style.borderColor = "rgba(255,255,255,0.3)";
-                    e.currentTarget.style.boxShadow =
-                      "0 18px 40px rgba(0,0,0,0.35)";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = "translateY(0)";
-                    e.currentTarget.style.borderColor =
-                      "rgba(255,255,255,0.12)";
-                    e.currentTarget.style.boxShadow = "none";
-                  }}
-                >
-                  <strong
-                    style={{
-                      display: "block",
-                      fontSize: "42px",
-                      fontWeight: "900",
-                      letterSpacing: "-2px",
-                      background: "linear-gradient(90deg, #ffffff, #888888)",
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
-                      lineHeight: "1",
-                      marginBottom: "12px",
-                    }}
-                  >
-                    4+
-                  </strong>
+              <div className="stats">
 
-                  <span
-                    style={{
-                      display: "block",
-                      color: "#999",
-                      fontSize: "12px",
-                      lineHeight: "1.6",
-                    }}
-                  >
-                    Years Creative & Technical Experience
-                  </span>
+                <div className="stat">
+                  <strong>4+</strong>
+                  <span>Years Creative & Technical Experience</span>
                 </div>
 
-                <div
-                  className="stat"
-                  style={{
-                    padding: "24px 20px",
-                    borderRadius: "18px",
-                    background:
-                      "linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02))",
-                    border: "1px solid rgba(255,255,255,0.12)",
-                    backdropFilter: "blur(12px)",
-                    WebkitBackdropFilter: "blur(12px)",
-                    transition: "all 0.35s ease",
-                    position: "relative",
-                    overflow: "hidden",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = "translateY(-7px)";
-                    e.currentTarget.style.borderColor = "rgba(255,255,255,0.3)";
-                    e.currentTarget.style.boxShadow =
-                      "0 18px 40px rgba(0,0,0,0.35)";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = "translateY(0)";
-                    e.currentTarget.style.borderColor =
-                      "rgba(255,255,255,0.12)";
-                    e.currentTarget.style.boxShadow = "none";
-                  }}
-                >
-                  <strong
-                    style={{
-                      display: "block",
-                      fontSize: "34px",
-                      fontWeight: "900",
-                      letterSpacing: "-1.5px",
-                      background: "linear-gradient(90deg, #ffffff, #888888)",
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
-                      lineHeight: "1",
-                      marginBottom: "12px",
-                      whiteSpace: "nowrap",
-                    }}
-                  >
-                    50K+ 
-                  </strong>
-
-                  <span
-                    style={{
-                      display: "block",
-                      color: "#999",
-                      fontSize: "12px",
-                      lineHeight: "1.6",
-                    }}
-                  >
-                    Followers
-                    <br />
-                    Leopard Media
-                  </span>
+                <div className="stat">
+                  <strong>50K+</strong>
+                  <span>Followers · Leopard Media</span>
                 </div>
 
-                <div
-                  className="stat"
-                  style={{
-                    padding: "24px 20px",
-                    borderRadius: "18px",
-                    background:
-                      "linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02))",
-                    border: "1px solid rgba(255,255,255,0.12)",
-                    backdropFilter: "blur(12px)",
-                    WebkitBackdropFilter: "blur(12px)",
-                    transition: "all 0.35s ease",
-                    position: "relative",
-                    overflow: "hidden",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = "translateY(-7px)";
-                    e.currentTarget.style.borderColor = "rgba(255,255,255,0.3)";
-                    e.currentTarget.style.boxShadow =
-                      "0 18px 40px rgba(0,0,0,0.35)";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = "translateY(0)";
-                    e.currentTarget.style.borderColor =
-                      "rgba(255,255,255,0.12)";
-                    e.currentTarget.style.boxShadow = "none";
-                  }}
-                >
-                  <strong
-                    style={{
-                      display: "block",
-                      fontSize: "42px",
-                      fontWeight: "900",
-                      letterSpacing: "-2px",
-                      background: "linear-gradient(90deg, #ffffff, #888888)",
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
-                      lineHeight: "1",
-                      marginBottom: "12px",
-                    }}
-                  >
-                    3+
-                  </strong>
-
-                  <span
-                    style={{
-                      display: "block",
-                      color: "#999",
-                      fontSize: "12px",
-                      lineHeight: "1.6",
-                    }}
-                  >
-                    Development Domains
-                  </span>
+                <div className="stat">
+                  <strong>3+</strong>
+                  <span>Development Domains</span>
                 </div>
+
               </div>
 
             </div>
@@ -622,14 +462,12 @@ export default function Home() {
 
       </section>
 
-      {/* ================= SERVICES ================= */}
-
+      {/* SERVICES */}
       <section id="services" className="section services-section">
 
         <div className="container">
 
           <div className="section-heading">
-
             <span className="section-number">02 /</span>
 
             <div>
@@ -641,7 +479,6 @@ export default function Home() {
                 to <span>execution.</span>
               </h2>
             </div>
-
           </div>
 
           <div className="services-grid">
@@ -696,37 +533,36 @@ export default function Home() {
 
       </section>
 
-      {/* ================= PROJECTS ================= */}
-
+      {/* PROJECTS */}
       <section id="projects" className="section projects-section">
 
         <div className="container">
 
           <div className="section-heading">
-
             <span className="section-number">03 /</span>
 
             <div>
               <p className="eyebrow">SELECTED PROJECTS</p>
 
               <h2>
-                Work that made
+                Completed
                 <br />
-                <span>an impact.</span>
+                <span>Projects.</span>
               </h2>
             </div>
-
           </div>
+
 
           <div className="projects-list">
 
             {projects.map((project) => (
               <article
                 key={project.number}
-                className={`project-item ${activeProject === project.number
+                className={`project-item ${
+                  activeProject === project.number
                     ? "project-active"
                     : ""
-                  }`}
+                }`}
                 onMouseEnter={() =>
                   setActiveProject(project.number)
                 }
@@ -750,13 +586,11 @@ export default function Home() {
                   <p>{project.description}</p>
 
                   <div className="project-tech">
-
                     {project.technologies.map((technology) => (
                       <span key={technology}>
                         {technology}
                       </span>
                     ))}
-
                   </div>
 
                 </div>
@@ -780,14 +614,12 @@ export default function Home() {
 
       </section>
 
-      {/* ================= EXPERIENCE ================= */}
-
+      {/* EXPERIENCE */}
       <section id="experience" className="section experience-section">
 
         <div className="container">
 
           <div className="section-heading">
-
             <span className="section-number">04 /</span>
 
             <div>
@@ -799,7 +631,6 @@ export default function Home() {
                 <span>growth.</span>
               </h2>
             </div>
-
           </div>
 
           <div className="timeline">
@@ -839,8 +670,6 @@ export default function Home() {
 
           </div>
 
-          {/* EDUCATION */}
-
           <div className="education-section">
 
             <p className="eyebrow">
@@ -851,11 +680,9 @@ export default function Home() {
 
               <div className="education-card">
                 <span>2021 — 2025</span>
-
                 <h3>
                   Bachelor of Science in Computer Science
                 </h3>
-
                 <p>
                   Mirpur University of Science & Technology (MUST)
                 </p>
@@ -863,11 +690,9 @@ export default function Home() {
 
               <div className="education-card">
                 <span>2022</span>
-
                 <h3>
                   Graphic Design Certification
                 </h3>
-
                 <p>
                   NAVTTC Pakistan
                 </p>
@@ -875,11 +700,9 @@ export default function Home() {
 
               <div className="education-card">
                 <span>PSEB</span>
-
                 <h3>
                   Paid Professional Internship
                 </h3>
-
                 <p>
                   Web Development & Government Portal Development
                 </p>
@@ -887,11 +710,9 @@ export default function Home() {
 
               <div className="education-card">
                 <span>SPECIALIZATION</span>
-
                 <h3>
                   Python, AI & Data Technologies
                 </h3>
-
                 <p>
                   Python programming, AI, data mining and digital image
                   processing.
@@ -906,11 +727,11 @@ export default function Home() {
 
       </section>
 
-      {/* ================= STATEMENT ================= */}
-
+      {/* STATEMENT */}
       <section className="statement-section">
 
         <div className="statement-grid-bg"></div>
+        <div className="statement-glow"></div>
 
         <div className="container">
 
@@ -923,6 +744,7 @@ export default function Home() {
             <h2>
               Code with purpose.
               <br />
+              Design with <em>intention.</em>
             </h2>
 
             <p>
@@ -936,8 +758,7 @@ export default function Home() {
 
       </section>
 
-      {/* ================= CONTACT ================= */}
-
+      {/* CONTACT */}
       <section id="contact" className="section contact-section">
 
         <div className="container">
@@ -1019,8 +840,7 @@ export default function Home() {
 
       </section>
 
-      {/* ================= FOOTER ================= */}
-
+      {/* FOOTER */}
       <footer className="footer">
 
         <div className="container footer-container">
