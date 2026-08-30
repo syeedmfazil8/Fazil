@@ -321,10 +321,7 @@ export default function Home() {
                 {"</>"}
               </div>
 
-              <div>
-                <strong>Senior Web Developer</strong>
-                <span>Frontend|Backend</span>
-              </div>
+             
             </div>
 
             <div className="floating-card ai-card">
