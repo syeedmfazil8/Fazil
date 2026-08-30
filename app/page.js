@@ -320,7 +320,10 @@ export default function Home() {
               <div className="floating-icon">
                 {"</>"}
               </div>
-
+ <div>
+                <strong>Web Developer</strong>
+                <span>Full Stack</span>
+              </div>
              
             </div>
 
