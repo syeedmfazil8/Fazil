@@ -130,7 +130,6 @@ export default function Home() {
     };
 
     const handleMouseOver = (e) => {
-      // Expand cursor on links, buttons, and clickable project items
       if (e.target.closest('a') || e.target.closest('button') || e.target.closest('.project-item')) {
         setIsHovering(true);
       } else {
@@ -151,7 +150,10 @@ export default function Home() {
   return (
     <main className="portfolio-page relative">
       
-      {/* CUSTOM CIRCULAR CURSOR (Only renders after mount to prevent SSR hydration errors) */}
+      {/* GLOBAL ANIMATED GRID */}
+      <div className="global-grid-bg"></div>
+
+      {/* CUSTOM CIRCULAR CURSOR */}
       {isMounted && (
         <>
           <motion.div
@@ -199,7 +201,6 @@ export default function Home() {
 
       {/* HERO SECTION */}
       <section id="home" className="hero-section">
-        <div className="hero-grid-bg"></div>
         <div className="hero-glow hero-glow-one"></div>
         <div className="hero-glow hero-glow-two"></div>
 
@@ -549,7 +550,6 @@ export default function Home() {
 
       {/* STATEMENT SECTION */}
       <section className="statement-section">
-        <div className="statement-grid-bg"></div>
         <div className="statement-glow"></div>
         <div className="container">
           <motion.div 
