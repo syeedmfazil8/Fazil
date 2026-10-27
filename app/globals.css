@@ -17,7 +17,6 @@
   --pink: #ec4899;
 
   --border: rgba(255, 255, 255, 0.09);
-
   --container: 1180px;
 }
 
@@ -36,7 +35,7 @@ body {
   color: var(--text);
   font-family: "DM Sans", sans-serif;
   overflow-x: hidden;
-  cursor: none; /* Hide default cursor */
+  cursor: none; 
 }
 
 a, button, .project-link, .btn {
@@ -57,20 +56,42 @@ a { color: inherit; text-decoration: none; }
 button { font: inherit; }
 ::selection { background: var(--purple); color: white; }
 
-/* ================= GLOBAL ANIMATED GRID ================= */
+/* ================= GLOBAL ANIMATED SPOTLIGHT GRID ================= */
+
+/* The base background grid (very faint) */
 .global-grid-bg {
   position: fixed;
-  inset: -50px; /* Offset to hide edges while moving */
+  inset: -50px;
   z-index: 0;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
   background-size: 60px 60px;
   animation: grid-move 8s linear infinite;
   pointer-events: none;
-  /* Mask makes the grid fade at the screen edges for a better look */
-  mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
-  -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+}
+
+/* The bright spotlight grid that follows the mouse */
+.grid-spotlight {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  background-image:
+    linear-gradient(rgba(139, 92, 246, 0.3) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139, 92, 246, 0.3) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  /* The mask makes the grid visible ONLY at the mouse coordinates */
+  mask-image: radial-gradient(
+    circle 300px at var(--mouse-x, -1000px) var(--mouse-y, -1000px),
+    black 0%,
+    transparent 100%
+  );
+  -webkit-mask-image: radial-gradient(
+    circle 300px at var(--mouse-x, -1000px) var(--mouse-y, -1000px),
+    black 0%,
+    transparent 100%
+  );
 }
 
 @keyframes grid-move {
@@ -80,7 +101,6 @@ button { font: inherit; }
 
 .portfolio-page {
   min-height: 100vh;
-  /* ONLY gradient glows here. NO solid background color blocking the grid. */
   background:
     radial-gradient(circle at 10% 20%, rgba(91, 33, 182, 0.08), transparent 30%),
     radial-gradient(circle at 90% 60%, rgba(37, 99, 235, 0.07), transparent 30%);
@@ -97,10 +117,8 @@ button { font: inherit; }
 /* ================= CUSTOM CIRCULAR CURSOR ================= */
 .custom-cursor {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 32px;
-  height: 32px;
+  top: 0; left: 0;
+  width: 32px; height: 32px;
   border: 1.5px solid rgba(255, 255, 255, 0.8);
   border-radius: 50%;
   pointer-events: none;
@@ -111,18 +129,15 @@ button { font: inherit; }
 }
 
 .custom-cursor.hovering {
-  width: 64px;
-  height: 64px;
+  width: 64px; height: 64px;
   background-color: rgba(255, 255, 255, 0.1);
   border-color: rgba(139, 92, 246, 0.5);
 }
 
 .custom-cursor-dot {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 6px;
-  height: 6px;
+  top: 0; left: 0;
+  width: 6px; height: 6px;
   background-color: var(--white);
   border-radius: 50%;
   pointer-events: none;
@@ -443,7 +458,7 @@ button { font: inherit; }
   .contact-main h2 { font-size: 46px; }
   .big-email { font-size: 16px; }
   .footer-links { flex-wrap: wrap; justify-content: center; }
-  .custom-cursor, .custom-cursor-dot { display: none; } /* Hide on mobile */
+  .custom-cursor, .custom-cursor-dot, .grid-spotlight { display: none; } /* Hide on mobile */
 }
 
 @media (prefers-reduced-motion: reduce) {
