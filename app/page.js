@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, useScroll, useSpring } from "framer-motion";
+import { motion, useScroll, useSpring, useMotionValue } from "framer-motion";
 
 const skills = [
   "HTML5", "CSS3", "JavaScript", "React", "Next.js", "PHP", "Laravel", "MySQL",
@@ -105,20 +105,66 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeProject, setActiveProject] = useState(null);
+  const [isMounted, setIsMounted] = useState(false);
+  const [isHovering, setIsHovering] = useState(false);
 
   // Scroll progress bar
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
 
+  // Custom Cursor tracking
+  const cursorX = useMotionValue(-100);
+  const cursorY = useMotionValue(-100);
+  const springConfig = { damping: 25, stiffness: 300, mass: 0.5 };
+  const cursorXSpring = useSpring(cursorX, springConfig);
+  const cursorYSpring = useSpring(cursorY, springConfig);
+
   useEffect(() => {
+    setIsMounted(true);
     const handleScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+
+    const moveCursor = (e) => {
+      cursorX.set(e.clientX);
+      cursorY.set(e.clientY);
+    };
+
+    const handleMouseOver = (e) => {
+      // Expand cursor on links, buttons, and clickable project items
+      if (e.target.closest('a') || e.target.closest('button') || e.target.closest('.project-item')) {
+        setIsHovering(true);
+      } else {
+        setIsHovering(false);
+      }
+    };
+
+    window.addEventListener("mousemove", moveCursor);
+    window.addEventListener("mouseover", handleMouseOver);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("mousemove", moveCursor);
+      window.removeEventListener("mouseover", handleMouseOver);
+    };
+  }, [cursorX, cursorY]);
 
   return (
     <main className="portfolio-page relative">
       
+      {/* CUSTOM CIRCULAR CURSOR (Only renders after mount to prevent SSR hydration errors) */}
+      {isMounted && (
+        <>
+          <motion.div
+            className={`custom-cursor ${isHovering ? "hovering" : ""}`}
+            style={{ x: cursorXSpring, y: cursorYSpring }}
+          />
+          <motion.div
+            className="custom-cursor-dot"
+            style={{ x: cursorX, y: cursorY }}
+          />
+        </>
+      )}
+
       {/* ADVANCED SCROLL PROGRESS BAR */}
       <motion.div 
         className="fixed top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-blue-600 to-cyan-400 origin-left z-[100]" 
