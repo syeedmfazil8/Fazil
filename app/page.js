@@ -127,6 +127,10 @@ export default function Home() {
     const moveCursor = (e) => {
       cursorX.set(e.clientX);
       cursorY.set(e.clientY);
+      
+      // Update CSS variables for the Spotlight Grid
+      document.documentElement.style.setProperty('--mouse-x', `${e.clientX}px`);
+      document.documentElement.style.setProperty('--mouse-y', `${e.clientY}px`);
     };
 
     const handleMouseOver = (e) => {
@@ -150,8 +154,9 @@ export default function Home() {
   return (
     <main className="portfolio-page relative">
       
-      {/* GLOBAL ANIMATED GRID */}
+      {/* GLOBAL ANIMATED SPOTLIGHT GRID */}
       <div className="global-grid-bg"></div>
+      <div className="grid-spotlight"></div>
 
       {/* CUSTOM CIRCULAR CURSOR */}
       {isMounted && (
